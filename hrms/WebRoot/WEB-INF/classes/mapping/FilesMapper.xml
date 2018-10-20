@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.FilesMapper" >
+  <resultMap id="BaseResultMap" type="model.Files" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="urls" property="urls" jdbcType="VARCHAR" />
+    <result column="savetime" property="savetime" jdbcType="VARCHAR" />
+    <result column="user" property="user" jdbcType="VARCHAR" />
+    
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, mima,tel,type
+  </sql>
+  
+  
+  <select id="getAll" parameterType="model.Files" resultMap="BaseResultMap">
+  	SELECT * FROM files where 1=1  
+  		<if test="name != null" >
+        and  name like #{name,jdbcType=VARCHAR} 
+      </if>
+  </select>
+</mapper>

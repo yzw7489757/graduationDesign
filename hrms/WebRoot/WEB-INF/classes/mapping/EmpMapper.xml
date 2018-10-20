@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.EmpMapper" >
+  <resultMap id="BaseResultMap" type="model.Emp" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="tel" property="tel" jdbcType="VARCHAR" />
+    <result column="mail" property="mail" jdbcType="VARCHAR" />
+    <result column="birth" property="birth" jdbcType="VARCHAR" />
+    <result column="mark" property="mark" jdbcType="VARCHAR" />
+    <result column="job" property="job" jdbcType="VARCHAR" />
+    <result column="dept" property="dept" jdbcType="VARCHAR" />
+    
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, sex,tel,mail,birth,mark,job,dept
+  </sql>
+  
+  <select id="getAll" parameterType="model.Emp" resultMap="BaseResultMap">
+  	SELECT * FROM emp where 1=1  
+  	  <if test="name != null" >
+        and name like #{name,jdbcType=VARCHAR} 
+      </if> 
+      <if test="idcard != null" >
+        and idcard like #{idcard,jdbcType=VARCHAR} 
+      </if>
+      <if test="tel != null" >
+        and tel like #{tel,jdbcType=VARCHAR} 
+      </if>
+      <if test="job != null" >
+        and job like #{job,jdbcType=VARCHAR} 
+      </if>
+  </select>
+</mapper>

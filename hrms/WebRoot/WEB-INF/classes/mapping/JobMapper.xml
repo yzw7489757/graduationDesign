@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.JobMapper" >
+  <resultMap id="BaseResultMap" type="model.Job" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="mark" property="mark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, mima,tel,type
+  </sql>
+  
+  
+  <select id="getAll" parameterType="model.Job" resultMap="BaseResultMap">
+  	SELECT * FROM job where 1=1  
+  	<if test="name != null" >
+        and name like #{name,jdbcType=VARCHAR}
+      </if>
+  </select>
+</mapper>
